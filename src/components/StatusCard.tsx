@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { MomoStatus } from '@/types';
 
 interface StatusCardProps {
@@ -10,9 +11,13 @@ export function StatusCard({ status }: StatusCardProps) {
   return (
     <div className="bg-gradient-to-br from-violet-500 to-purple-600 rounded-2xl p-6 text-white shadow-xl">
       <div className="flex items-center gap-4 mb-4">
-        <div className="w-16 h-16 rounded-full bg-white/20 flex items-center justify-center text-3xl">
-          🤖
-        </div>
+        <Image
+          src="/momo-avatar.png"
+          alt="Momo"
+          width={64}
+          height={64}
+          className="rounded-full"
+        />
         <div>
           <h2 className="text-2xl font-bold">Momo</h2>
           <p className="text-white/80">{status.mood}</p>
