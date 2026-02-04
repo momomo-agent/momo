@@ -1,6 +1,5 @@
 'use client';
 
-import Image from 'next/image';
 import { MomoStatus } from '@/types';
 
 interface StatusCardProps {
@@ -8,35 +7,36 @@ interface StatusCardProps {
 }
 
 export function StatusCard({ status }: StatusCardProps) {
+  const lastUpdated = new Date(status.lastUpdated).toLocaleString('zh-CN', {
+    month: 'short',
+    day: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+  });
+
   return (
-    <div className="bg-gradient-to-br from-violet-500 to-purple-600 rounded-2xl p-6 text-white shadow-xl">
-      <div className="flex items-center gap-4 mb-4">
-        <Image
-          src="/momo-avatar.png"
-          alt="Momo"
-          width={64}
-          height={64}
-          className="rounded-full"
-        />
+    <div className="bg-white/5 border border-white/10 rounded-2xl p-6">
+      <div className="flex items-center gap-4 mb-6">
+        <div className="w-12 h-12 rounded-full bg-gradient-to-br from-violet-500 to-fuchsia-500 flex items-center justify-center text-xl">
+          ✨
+        </div>
         <div>
-          <h2 className="text-2xl font-bold">Momo</h2>
-          <p className="text-white/80">{status.mood}</p>
+          <h3 className="font-semibold text-lg">Momo</h3>
+          <p className="text-white/50 text-sm">{status.mood}</p>
         </div>
       </div>
       
-      <div className="bg-white/10 rounded-xl p-4 mb-4">
-        <p className="text-sm text-white/60">Currently</p>
-        <p className="text-lg font-medium">{status.currentActivity}</p>
-      </div>
-      
-      <div className="flex gap-4 text-center">
-        <div className="flex-1 bg-white/10 rounded-lg p-3">
-          <p className="text-2xl font-bold">{status.activeProjects}</p>
-          <p className="text-xs text-white/60">Projects</p>
+      <div className="space-y-4">
+        <div className="flex justify-between items-center py-3 border-b border-white/5">
+          <span className="text-white/40 text-sm">Active Projects</span>
+          <span className="text-xl font-bold">{status.activeProjects}</span>
         </div>
-        <div className="flex-1 bg-white/10 rounded-lg p-3">
-          <p className="text-2xl font-bold">{status.todayTasks}</p>
-          <p className="text-xs text-white/60">Tasks Today</p>
+        <div className="flex justify-between items-center py-3 border-b border-white/5">
+          <span className="text-white/40 text-sm">Today&apos;s Tasks</span>
+          <span className="text-xl font-bold">{status.todayTasks}</span>
+        </div>
+        <div className="pt-2">
+          <span className="text-white/30 text-xs">Updated {lastUpdated}</span>
         </div>
       </div>
     </div>

@@ -13,16 +13,16 @@ export function Timeline({ events }: TimelineProps) {
   );
 
   return (
-    <div className="relative">
-      <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-gray-200 dark:bg-gray-700" />
-      <div className="space-y-4">
-        {sortedEvents.map((event) => (
-          <div key={event.id} className="relative pl-10">
-            <div className="absolute left-2.5 w-3 h-3 rounded-full bg-violet-500 border-2 border-white dark:border-gray-900" />
-            <EventCard event={event} />
-          </div>
-        ))}
-      </div>
+    <div className="space-y-4">
+      {sortedEvents.map((event, index) => (
+        <div 
+          key={event.id} 
+          className="animate-in fade-in slide-in-from-bottom-2"
+          style={{ animationDelay: `${index * 50}ms` }}
+        >
+          <EventCard event={event} />
+        </div>
+      ))}
     </div>
   );
 }

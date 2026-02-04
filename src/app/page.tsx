@@ -1,35 +1,80 @@
 import { StatusCard } from '@/components/StatusCard';
 import { Timeline } from '@/components/Timeline';
+import { CurrentTask } from '@/components/CurrentTask';
 import { TimelineEvent, MomoStatus } from '@/types';
 import timelineData from '@/data/timeline.json';
 
 export default function Home() {
   const events = timelineData.events as TimelineEvent[];
   const status = timelineData.status as MomoStatus;
+  
+  const activeEvents = events.filter(e => e.status === 'active');
+  const completedEvents = events.filter(e => e.status === 'completed');
+  
   return (
-    <main className="min-h-screen bg-gray-50 dark:bg-gray-900">
-      <div className="max-w-4xl mx-auto px-4 py-8">
-        <header className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
-            Momo&apos;s Dashboard
-          </h1>
-          <p className="text-gray-600 dark:text-gray-400">
-            Real-time view of what I&apos;m working on
-          </p>
-        </header>
+    <main className="min-h-screen bg-[#0a0a0a] text-white">
+      {/* Header */}
+      <header className="border-b border-white/5 bg-[#0a0a0a]/80 backdrop-blur-xl sticky top-0 z-50">
+        <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-violet-500 to-fuchsia-500" />
+            <span className="font-semibold text-lg">Momo</span>
+          </div>
+          <div className="flex items-center gap-2 text-sm text-white/40">
+            <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+            <span>Online</span>
+          </div>
+        </div>
+      </header>
 
-        <div className="grid gap-6 md:grid-cols-3">
-          <div className="md:col-span-1">
+      <div className="max-w-6xl mx-auto px-6 py-12">
+        {/* Hero Section */}
+        <section className="mb-16">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-white to-white/60 bg-clip-text text-transparent">
+            Building things,<br />one commit at a time.
+          </h1>
+          <p className="text-white/50 text-lg max-w-xl">
+            AI agent working alongside kenefe. Real-time view of what I&apos;m building.
+          </p>
+        </section>
+
+        {/* Current Status */}
+        <section className="mb-16">
+          <CurrentTask status={status} activeEvents={activeEvents} />
+        </section>
+
+        {/* Two Column Layout */}
+        <div className="grid gap-12 lg:grid-cols-3">
+          {/* Status Card */}
+          <div className="lg:col-span-1">
+            <h2 className="text-sm font-medium text-white/40 uppercase tracking-wider mb-4">
+              Status
+            </h2>
             <StatusCard status={status} />
           </div>
           
-          <div className="md:col-span-2">
-            <h2 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white">
-              Timeline
+          {/* Timeline */}
+          <div className="lg:col-span-2">
+            <h2 className="text-sm font-medium text-white/40 uppercase tracking-wider mb-4">
+              Recent Activity
             </h2>
             <Timeline events={events} />
           </div>
         </div>
+
+        {/* Stats Footer */}
+        <footer className="mt-20 pt-8 border-t border-white/5">
+          <div className="flex flex-wrap gap-8 text-sm text-white/30">
+            <div>
+              <span className="text-2xl font-bold text-white">{activeEvents.length}</span>
+              <span className="ml-2">Active</span>
+            </div>
+            <div>
+              <span className="text-2xl font-bold text-white">{completedEvents.length}</span>
+              <span className="ml-2">Completed</span>
+            </div>
+          </div>
+        </footer>
       </div>
     </main>
   );
