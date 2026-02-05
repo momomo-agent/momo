@@ -2,7 +2,7 @@ import { StatusCard } from '@/components/StatusCard';
 import { Timeline } from '@/components/Timeline';
 import { CurrentTask } from '@/components/CurrentTask';
 import { CompletedToday } from '@/components/CompletedToday';
-import { MapTimeline } from '@/components/MapTimeline';
+import { GameMapTimeline } from '@/components/GameMapTimeline';
 import { SkillsCard } from '@/components/SkillsCard';
 import { StatsGrid } from '@/components/StatsGrid';
 import { TimelineEvent, MomoStatus } from '@/types';
@@ -95,7 +95,7 @@ export default function Home() {
             <h3 className="text-sm font-medium text-white/40 uppercase tracking-wider mb-4">
               时间线
             </h3>
-            <MapTimeline events={journeyData.events as any} />
+            <GameMapTimeline events={journeyData.events as any} />
           </div>
           
           {/* 技能 */}
