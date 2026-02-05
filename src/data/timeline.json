@@ -1,12 +1,22 @@
 {
   "status": {
-    "currentActivity": "JotJot 持续优化中",
-    "mood": "🔥 专注",
-    "lastUpdated": "2026-02-05T00:35:00+08:00",
+    "currentActivity": "WebGPU 3DGS 查看器开发中",
+    "mood": "🔧 调试",
+    "lastUpdated": "2026-02-05T14:28:00+08:00",
     "activeProjects": 2,
-    "todayTasks": 8
+    "todayTasks": 5
   },
   "events": [
+    {
+      "id": "webgpu-3dgs",
+      "title": "WebGPU 3DGS",
+      "description": "3D Gaussian Splatting 点云查看器 - WebGPU渲染/PLY加载/交互控制",
+      "status": "active",
+      "startTime": "2026-02-05T12:00:00+08:00",
+      "category": "project",
+      "progress": 80,
+      "tags": ["WebGPU", "3DGS", "点云渲染"]
+    },
     {
       "id": "jotjot",
       "title": "JotJot",
@@ -15,8 +25,7 @@
       "startTime": "2026-02-03T22:00:00+08:00",
       "category": "project",
       "progress": 92,
-      "tags": [
-        "SwiftUI",
-        "SwiftData",
-        "iCloud"
-      
+      "tags": ["SwiftUI", "SwiftData", "iCloud"]
+    }
+  ]
+}
