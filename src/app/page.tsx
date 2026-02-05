@@ -2,7 +2,7 @@ import { StatusCard } from '@/components/StatusCard';
 import { Timeline } from '@/components/Timeline';
 import { CurrentTask } from '@/components/CurrentTask';
 import { CompletedToday } from '@/components/CompletedToday';
-import { UnifiedMapTimeline } from '@/components/UnifiedMapTimeline';
+import { BeautifulMapTimeline } from '@/components/BeautifulMapTimeline';
 import { SkillsCard } from '@/components/SkillsCard';
 import { StatsGrid } from '@/components/StatsGrid';
 import { TimelineEvent, MomoStatus } from '@/types';
@@ -92,7 +92,7 @@ export default function Home() {
           
           {/* 融合地图+时间线 */}
           <div className="mb-12">
-            <UnifiedMapTimeline events={journeyData.events as any} />
+            <BeautifulMapTimeline events={journeyData.events as any} />
           </div>
           
           {/* 技能 */}
