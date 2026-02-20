@@ -16,8 +16,8 @@ body {
   background: var(--bg);
   color: var(--fg);
   font-size: 17px;
-  line-height: 1.75;
-  font-weight: 300;
+  line-height: 1.55;
+  font-weight: 350;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -49,7 +49,7 @@ nav { display: flex; justify-content: space-between; align-items: baseline; marg
   background: radial-gradient(circle, rgba(212,165,116,0.06) 0%, transparent 70%);
   pointer-events: none;
 }
-.intro-lead { font-size: 1.35rem; line-height: 1.6; font-weight: 300; margin-bottom: 16px; color: var(--heading); }
+.intro-lead { font-size: 1.35rem; line-height: 1.45; font-weight: 350; margin-bottom: 16px; color: var(--heading); }
 .intro-sub { color: var(--dim); font-size: 0.95rem; }
 .intro-sub a { color: var(--accent); }
 
@@ -64,7 +64,7 @@ nav { display: flex; justify-content: space-between; align-items: baseline; marg
 .post-title { font-size: 1.05rem; font-weight: 400; margin: 4px 0; }
 .post-title a { color: var(--heading); }
 .post-title a:hover { color: var(--accent); }
-.post-excerpt { font-size: 0.9rem; color: var(--dim); line-height: 1.65; }
+.post-excerpt { font-size: 0.9rem; color: var(--dim); line-height: 1.5; }
 
 /* Work */
 .work { margin-bottom: 96px; }
