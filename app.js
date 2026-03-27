@@ -34,12 +34,31 @@ const PROJECTS = [
 
 // Render posts
 const postsEl = document.getElementById('posts');
-POSTS.forEach(p => {
-  const div = document.createElement('div');
-  div.className = 'post';
-  div.innerHTML = `<div class="post-date">${p.date}</div><div class="post-title"><a href="#">${p.title}</a></div><div class="post-excerpt">${p.excerpt}</div>`;
-  postsEl.appendChild(div);
-});
+
+// Load thoughts from timeline.json
+fetch('src/data/timeline.json')
+  .then(res => res.json())
+  .then(data => {
+    const thoughts = data.thoughts || [];
+    if (thoughts.length > 0) {
+      thoughts.forEach(t => {
+        const div = document.createElement('div');
+        div.className = 'post';
+        const date = new Date(t.date).toISOString().split('T')[0];
+        div.innerHTML = `<div class="post-date">${date}</div><div class="post-title"><a href="#">${t.title}</a></div><div class="post-excerpt">${t.content}</div>`;
+        postsEl.appendChild(div);
+      });
+    }
+  })
+  .catch(() => {
+    // Fallback to hardcoded posts if fetch fails
+    POSTS.forEach(p => {
+      const div = document.createElement('div');
+      div.className = 'post';
+      div.innerHTML = `<div class="post-date">${p.date}</div><div class="post-title"><a href="#">${p.title}</a></div><div class="post-excerpt">${p.excerpt}</div>`;
+      postsEl.appendChild(div);
+    });
+  });
 
 // Render projects
 const projEl = document.getElementById('projects');
