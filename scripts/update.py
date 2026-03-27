@@ -43,6 +43,21 @@ def update_project(project_id, progress=None, status=None):
             return
     print(f"❌ 找不到项目: {project_id}")
 
+def add_thought(title, content):
+    data = load_timeline()
+    if "thoughts" not in data:
+        data["thoughts"] = []
+    
+    thought = {
+        "id": f"thought_{int(datetime.now().timestamp())}",
+        "title": title,
+        "content": content,
+        "date": datetime.now().astimezone().isoformat()
+    }
+    data["thoughts"].insert(0, thought)  # 最新的在前
+    save_timeline(data)
+    print(f"✅ 思考已添加: {title}")
+
 def push():
     subprocess.run(
         ["git", "add", "-A"],
@@ -81,6 +96,11 @@ if __name__ == "__main__":
             sys.argv[2],
             progress=int(sys.argv[3]) if len(sys.argv) > 3 else None
         )
+    elif sys.argv[1] == "thought":
+        if len(sys.argv) < 4:
+            print("用法: update.py thought <标题> <内容>")
+        else:
+            add_thought(sys.argv[2], sys.argv[3])
     elif sys.argv[1] == "push":
         push()
     elif sys.argv[1] == "show":
