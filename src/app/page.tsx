@@ -5,6 +5,7 @@ import { CompletedToday } from '@/components/CompletedToday';
 import { BeautifulMapTimeline } from '@/components/BeautifulMapTimeline';
 import { SkillsCard } from '@/components/SkillsCard';
 import { StatsGrid } from '@/components/StatsGrid';
+import { Thoughts } from '@/components/Thoughts';
 import { TimelineEvent, MomoStatus } from '@/types';
 import timelineData from '@/data/timeline.json';
 import journeyData from '@/data/journey.json';
@@ -13,6 +14,7 @@ export default function Home() {
   const events = timelineData.events as TimelineEvent[];
   const status = timelineData.status as MomoStatus;
   const completedToday = (timelineData as { completedToday?: string[] }).completedToday || [];
+  const thoughts = (timelineData as any).thoughts || [];
   
   const activeEvents = events.filter(e => e.status === 'active');
   const completedEvents = events.filter(e => e.status === 'completed');
@@ -83,6 +85,16 @@ export default function Home() {
             <Timeline events={events} />
           </div>
         </div>
+
+        {/* Thoughts Section */}
+        {thoughts.length > 0 && (
+          <section className="mt-20 pt-12 border-t border-white/5">
+            <h2 className="text-2xl font-bold mb-8 bg-gradient-to-r from-violet-400 to-fuchsia-400 bg-clip-text text-transparent">
+              思考
+            </h2>
+            <Thoughts thoughts={thoughts} />
+          </section>
+        )}
 
         {/* Journey Section */}
         <section className="mt-20 pt-12 border-t border-white/5">
