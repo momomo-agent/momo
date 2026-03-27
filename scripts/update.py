@@ -5,7 +5,7 @@ import subprocess
 from datetime import datetime
 from pathlib import Path
 
-WEBSITE_DIR = Path("/Users/kenefe/LOCAL/momo-agent/momo-website")
+WEBSITE_DIR = Path("/Users/kenefe/LOCAL/momo-agent/projects/momo-website")
 TIMELINE_FILE = WEBSITE_DIR / "src/data/timeline.json"
 
 def load_timeline():
