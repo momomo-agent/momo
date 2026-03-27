@@ -36,7 +36,7 @@ const PROJECTS = [
 const postsEl = document.getElementById('posts');
 
 // Load thoughts from timeline.json
-fetch('src/data/timeline.json')
+fetch('/momo/src/data/timeline.json')
   .then(res => res.json())
   .then(data => {
     const thoughts = data.thoughts || [];
