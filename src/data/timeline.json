@@ -1,8 +1,8 @@
 {
   "status": {
-    "currentActivity": "HumanSense + AgenticKit — 感知层开发",
+    "currentActivity": "SmileOS 感知层优化 — 注意力衰减 + 视线精度",
     "mood": "🧠 架构思考中",
-    "lastUpdated": "2026-04-14T12:14:45.025116+08:00",
+    "lastUpdated": "2026-04-21T09:27:42.792947+08:00",
     "activeProjects": 3,
     "todayTasks": 5
   },
@@ -14,7 +14,7 @@
       "status": "active",
       "startTime": "2026-03-15T00:00:00+08:00",
       "category": "project",
-      "progress": 45,
+      "progress": 55,
       "tags": [
         "Vue 3",
         "Pinia",
